@@ -6,8 +6,8 @@ class Person():
         return score
 
     def add_to_score(self, addend):
-        round_scores += 1
-        return score += addend
+        round_scores.append(addend)
+        return "You added " + addend + " to this quizzers score."
 
     def get_average(self):
         total = 0
