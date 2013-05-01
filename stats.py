@@ -1,6 +1,8 @@
-class Person():
-    score = 0
-    round_scores = []
+class Person(object):
+    
+    def __init__(self):
+        score = 0
+        round_scores = []
     
     def get_score(self):
         return score
