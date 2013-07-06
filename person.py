@@ -87,3 +87,4 @@ class Person(object):
     def get_average(self):
         """ calculates the average of all scores """
         return total
+    
