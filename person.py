@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
 
-""" Person class
+"""Creates a new person.
 
 Allows for the creation and manipulation of a person and his
 score.
@@ -30,7 +30,6 @@ score.
 class Person(object):
 
     def __init__(self):
-        score = 0
         round_errors = {}
         round_scores = {}
 
@@ -43,7 +42,7 @@ class Person(object):
         round_score: Score of the inputted round.
         round_errors: Errors of the inputted round.
     """
-    def add_to_score(self, round_number, round_score, round_errors):
+    def add_round(self, round_number, round_score, round_errors):
         round_num = round_number
         round_scores[round_num] = round_score
         round_errors[round_num] = round_errors
@@ -56,14 +55,13 @@ class Person(object):
         round_index: The index of the round to be deleted
     """
     def delete_round(self, round_index):
-        if round_index = "undefined":
-            print "Please pick a score from an already inputted round."
-            return subtract_score(round_index)
+        if round_scores[round_index] == "undefined" or round_errors[round_index] == "undefined":
+            return "Please pick a score from an already inputted round."
         else:
             # remove value from round_scores list and subtract it from total
             # score
             del round_scores[round_index]
-            score -= round_scores[round_index]
+            del round_errors[round_index]
             print "Round " + (round_index + 1) "'s score has been deleted."
             return
 
@@ -82,9 +80,10 @@ class Person(object):
     """Calculates the average of each score.
 
     Calculates the average of the scores of the individual.
+    
+    Returns:
+        Int: Average of the individuals scores.
     """
-    Returns: Average of the individuals scores.
     def get_average(self):
         """ calculates the average of all scores """
-        return total
-    
+        return self.get_score() / len(round_scores)
