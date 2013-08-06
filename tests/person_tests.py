@@ -16,6 +16,15 @@ class PersonTests(unittest.TestCase):
         dummy_score = self.dummy.round_scores
         self.assertIsInstance(dummy_score, dict)
 
+    def test_get_round_score(self):
+        self.dummy.add_round_score(1, 20)
+        self.assertEqual(self.dummy.get_round_score(1), 20)
+
+    def test_get_total_score(self):
+        self.dummy.add_round_score(1,30)
+        self.dummy.add_round_score(2,40)
+        self.assertEqual(self.dummy.get_total_score(), 70)
+
     def test_add_round_score(self):
         self.dummy.add_round_score(1, 20)
         self.assertEqual(self.dummy.round_scores, {1: 20})
@@ -30,6 +39,15 @@ class PersonTests(unittest.TestCase):
         dummy_errors = self.dummy.round_errors
         self.assertIsInstance(dummy_errors, dict)
 
+    def test_get_round_errors(self):
+        self.dummy.add_round_errors(1, 2)
+        self.assertEqual(self.dummy.get_round_errors(1), 2)
+
+    def test_get_total_errors(self):
+        self.dummy.add_round_errors(1, 3)
+        self.dummy.add_round_errors(2, 4)
+        self.assertEqual(self.dummy.get_total_errors(), 7)
+    
     def test_add_round_errors(self):
         self.dummy.add_round_errors(1, 2)
         self.assertEqual(self.dummy.round_errors, {1: 2})
