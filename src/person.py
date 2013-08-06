@@ -32,11 +32,35 @@ class Person(object):
         self.round_errors = {}
         self.round_scores = {}
 
+    def get_round_score(self, _round):
+        return self.round_scores[_round]
+
+    def get_total_score(self):
+        total = 0
+        for score in self.round_scores:
+            total += self.round_scores[score]
+        return total
+
+    """Adds a score to a round.
+    Uses a dictionary to add a score to a round number.
+    Args:
+        Int     _round       The round number to add.
+        Int     score        The score to be added.
+    """
     def add_round_score(self, _round, score):
         self.round_scores[_round] = score
 
     def delete_round_score(self, _round):
         del(self.round_scores[_round])
+
+    def get_round_errors(self, _round):
+        return self.round_errors[_round]
+
+    def get_total_errors(self):
+        total = 0
+        for error in self.round_errors:
+            total += self.round_errors[error]
+        return total
 
     def add_round_errors(self, _round, errors):
         self.round_errors[_round] = errors
