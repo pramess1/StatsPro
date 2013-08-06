@@ -20,36 +20,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
 
-
-class team:
-
-    def __init__(self, team_name, number_members):
-        name = team_name
-        members = []
-        round_ = {}
-        total_points = []
-    
-    def set_team_name(self, name):
-        if name == "undefined" or name == None:
-            return "Please enter a valid name."
-        else:
-            self.name = name
-            return "Name set!"
-
-    def get_team_name():
-        return self.name
-
-    def set_team_members(self, *args):
-        if len(args) > 5:
-            return "Teams can only have 5 members."
-        else:
-            for member in args:
-                members.append(member)
-            return "Team members added."    
-
-    def get_team_members(self):
-        if len(members) == 0:
-            return "This team has no members."
-        else:
-            return members
-
