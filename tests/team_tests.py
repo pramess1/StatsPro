@@ -20,4 +20,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
 
+import unittest
+import sys
+sys.path.append("../src")
+import team
 
+class TeamTests(unittest.TestCase):
+
+    def setUp(self):
+        self.dummy = team.Team()
+
+    def test_team_exists(self):
+        self.assertIs(self.dummy, team.Team())
