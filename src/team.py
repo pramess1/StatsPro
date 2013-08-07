@@ -20,4 +20,34 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
 
+class Team(object):
+    def __init__(self, number_of_members, name):
+        self.number_of_members = number_of_members
+        self.name = name
+        self.round_scores = {}
+        
+    def get_number_of_members(self):
+        return self.number_of_members
 
+    def set_number_of_members(self, number):
+        self.number_of_members = number
+        return self.number_of_members
+
+    def get_team_name(self):
+        return self.name
+
+    def set_team_name(self, name):
+        self.name = name
+        return self.name
+
+    def add_round_scores(self, _round, score):
+        self.round_scores[_round] = score
+
+    def delete_round_scores(self, _round):
+        del self.round_scores[_round]
+
+    def total_all_round_scores(self):
+        total = 0
+        for _round in self.round_scores:
+            total += self.round_scores[_round]
+        return total
