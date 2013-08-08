@@ -21,27 +21,37 @@ THE SOFTWARE.
 """
 
 class Team(object):
-    def __init__(self, number_of_members, name):
-        self.number_of_members = number_of_members
-        self.name = name
+
+    def __init__(self):
+        self.name = ""
         self.round_scores = {}
-        
-    def get_number_of_members(self):
-        return self.number_of_members
+        self.team_members = []
 
-    def set_number_of_members(self, number):
-        self.number_of_members = number
-        return self.number_of_members
-
+    """Returns the name of the team.
+    Returns the name of the team.
+    Returns:
+        String:    The name of the team as a string.
+    """
     def get_team_name(self):
         return self.name
 
+    """Sets the name of the team.
+    Simply sets the name of the team.
+    Args:
+        String:    The name of the team as a string.
+    """
     def set_team_name(self, name):
         self.name = name
-        return self.name
 
+    """Adds a round score to a dictionary.
+    Takes round and score and adds them to the round_score dictionary.
+    Args:
+        Int:    The number of the round in an integer.
+        Int:    The teams score for the round.
+    """
     def add_round_scores(self, _round, score):
         self.round_scores[_round] = score
+
 
     def delete_round_scores(self, _round):
         del self.round_scores[_round]
@@ -51,3 +61,13 @@ class Team(object):
         for _round in self.round_scores:
             total += self.round_scores[_round]
         return total
+
+    def get_team_members(self):
+        return self.team_members
+
+    def add_team_members(self, *names):
+        for member in names:
+            self.team_members.append(member)
+
+    def get_team_members(self):
+        return self.team_members
