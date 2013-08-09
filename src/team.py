@@ -23,9 +23,8 @@ THE SOFTWARE.
 class Team(object):
 
     def __init__(self):
-        self.name = ""
-        self.round_scores = {}
-        self.team_members = []
+        self._name = ""
+        self._team_members = []
 
     """Returns the name of the team.
     Returns the name of the team.
@@ -43,31 +42,27 @@ class Team(object):
     def set_team_name(self, name):
         self.name = name
 
-    """Adds a round score to a dictionary.
-    Takes round and score and adds them to the round_score dictionary.
-    Args:
-        Int:    The number of the round in an integer.
-        Int:    The teams score for the round.
+    """Gets the team_members of the team
+    Gets the team members and returns a list
+    Returns:
+        List:    A list of all the members on a team.
     """
-    def add_round_scores(self, _round, score):
-        self.round_scores[_round] = score
-
-
-    def delete_round_scores(self, _round):
-        del self.round_scores[_round]
-
-    def total_all_round_scores(self):
-        total = 0
-        for _round in self.round_scores:
-            total += self.round_scores[_round]
-        return total
-
     def get_team_members(self):
         return self.team_members
 
+    """Adds a team member.
+    Adds an indefinite number of members to a team.
+    Args:
+        Any:    Will take any input type.
+    """
     def add_team_members(self, *names):
         for member in names:
             self.team_members.append(member)
 
+    """Gets the members of a team.
+    Tets all of the members of the team.
+    Returns:
+        List:    A list of team members in any type.
+    """
     def get_team_members(self):
         return self.team_members
