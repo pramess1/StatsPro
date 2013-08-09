@@ -32,7 +32,7 @@ class Team(object):
         String:    The name of the team as a string.
     """
     def get_team_name(self):
-        return self.name
+        return self._name
 
     """Sets the name of the team.
     Simply sets the name of the team.
@@ -40,7 +40,7 @@ class Team(object):
         String:    The name of the team as a string.
     """
     def set_team_name(self, name):
-        self.name = name
+        self._name = name
 
     """Gets the team_members of the team
     Gets the team members and returns a list
@@ -48,7 +48,7 @@ class Team(object):
         List:    A list of all the members on a team.
     """
     def get_team_members(self):
-        return self.team_members
+        return self._team_members
 
     """Adds a team member.
     Adds an indefinite number of members to a team.
@@ -57,7 +57,7 @@ class Team(object):
     """
     def add_team_members(self, *names):
         for member in names:
-            self.team_members.append(member)
+            self._team_members.append(member)
 
     """Gets the members of a team.
     Tets all of the members of the team.
@@ -65,4 +65,4 @@ class Team(object):
         List:    A list of team members in any type.
     """
     def get_team_members(self):
-        return self.team_members
+        return self._team_members
