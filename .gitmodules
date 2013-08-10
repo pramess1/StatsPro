@@ -1,0 +1,3 @@
+[submodule "Quizzing"]
+	path = plugins/StatsPro-Quizzing
+	url = https://github.com/DaBungalow/StatsPro-Quizzing.git
