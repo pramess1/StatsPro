@@ -1,4 +1,4 @@
-"""Class for connecting to the mongodb. 
+"""Class for connecting to the mongodb.
 
 - Allows for inputting of rounds and players into a scalable mongodb database
 - Allows for searching for rounds and persons
@@ -7,35 +7,35 @@ import pymongo
 import datetime
 
 class pymongodb(object):
-	def __init__(self, ):
-		self.person
-	    
-	def connect_to_mongo():
-	    client = MongoClient("localhost", 27017)
-	    db = client.statpro
+    def __init__(self):
+    	self.database
+        self.person
+        self.round_
 
-	def post_person():
-		post = {"person"  : _person,
-				"round"   : _round,
-				"tags"	  : [_tag, _tag2]
-				"date"    : _datetime
-				}
-		person = db.person
-		person_pers = person.insert(person)
+    def connect_to_mongo(self):
+        client = MongoClient("localhost", 27017)
+        database = client.statpro
 
-	def post_round():
-		post = {"team"    : _team,
-				"members" : _members
-				"tags"	  : [_tag, _tag2]
-				"date"    : _datetime
-			    }
-		round = db.round
-		round_rond = round.insert(round)
+    def post_person(self, person, round_, *tags, date):
+        post = {"person"  : person,
+                "round"   : round_,
+                "tags"    : tags
+                "date"    : date
+                }
+        person = database.person
+        person_pers = person.insert(person)
 
-	def search_person():
-		person.find_one({"_pers": person_pers})
+    def post_round(self):
+        post = {"team"    : team,
+                "members" : members
+                "tags"    : tags
+                "date"    : datetime
+                }
+        self.round_ = database.round_
+        round_rond = self.round_.insert(round)
 
-	def search_round():
-		round.find_one({"_rond": round_rond})
+    def search_person(self):
+        person.find_one({"person": person_pers})
 
-
+    def search_round(self):
+        round_.find_one({"round": round_rond})
