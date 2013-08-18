@@ -27,4 +27,12 @@ class TeamTests(unittest.TestCase):
     def test_add_team_member(self):
         self.dummy.add_team_members("Daniel")
         self.dummy.add_team_members("Anna", "Heather", "Kimberly")
-        self.assertListEqual(self.dummy.get_team_members(), ["Daniel", "Anna", "Heather", "Kimberly"])
+        self.assertEqual(self.dummy.get_team_members(), ["Daniel", "Anna", "Heather", "Kimberly"])
+
+    def test_set_opposing_team(self):
+        self.dummy.set_opposing_team(1, "Bethel First")
+        self.assertEqual(self.dummy._opposing_team, {1: "Bethel First"})
+
+    def test_get_opposing_team(self):
+        self.dummy.set_opposing_team(3, "Bethel First")
+        self.assertEqual(self.dummy.get_opposing_team(3), "Bethel First")
