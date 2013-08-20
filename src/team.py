@@ -8,6 +8,8 @@ class Team(object):
         self._name = ""
         self._team_members = []
         self._opposing_team = {}
+        self._team_scores = {}
+        self._team_wins_losses_round = {}
 
     """Returns the name of the team.
     Returns the name of the team.
@@ -52,6 +54,9 @@ class Team(object):
 
     """Sets the name of the opposing team.
     Sets the name of the opposing team for a certain round.
+    Args:
+        Integer: the round to set the opposing team
+        String: the name of the opposing team
     """
     def set_opposing_team(self, round_, team):
         self._opposing_team[round_] = team
@@ -63,3 +68,29 @@ class Team(object):
     """
     def get_opposing_team(self, round_):
         return self._opposing_team[round_]
+
+    """Adds a round to the team.
+    Adds a round with all data to the current team.
+    Args:
+        Integer: the round number
+        Integer: the round score
+        String: the name of the opposing team
+        Boolean: whether the round was a win or loss
+    """
+    def add_team_round(self, round_, score, opponent, is_win):
+        if is_win == True:
+            self._team_wins_losses_round[round_] = "W"
+        else:
+            self._team_wins_losses_round[round_] = "L"
+        self._team_scores[round_] = score
+        self.set_opposing_team(round_, opponent)
+
+    """Removes a round from the current team.
+    Removes a round and all data from the current team.
+    Args:
+        Integer: the round number to delete.
+    """
+    def remove_team_round(self, round_):
+        del self._team_wins_losses_round[round_]
+        del self._team_scores[round_]
+        del self._opposing_team[round_]

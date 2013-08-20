@@ -36,3 +36,17 @@ class TeamTests(unittest.TestCase):
     def test_get_opposing_team(self):
         self.dummy.set_opposing_team(3, "Bethel First")
         self.assertEqual(self.dummy.get_opposing_team(3), "Bethel First")
+
+    def test_add_team_round(self):
+        self.dummy.add_team_round(1, 20, "Baker City", True)
+        self.assertEqual(self.dummy._team_wins_losses_round, {1: "W"})
+        self.assertEqual(self.dummy._team_scores[1], 20)
+        self.assertEqual(self.dummy._opposing_team[1], "Baker City")
+
+    def test_delete_team_round(self):
+        self.dummy.add_team_round(2, 100, "La Grande", False)
+        self.dummy.add_team_round(1, 20, "Baker City", True)
+        self.dummy.remove_team_round(1)
+        self.assertEqual(self.dummy._opposing_team[2], "La Grande")
+        self.assertEqual(self.dummy._team_wins_losses_round, {2: "L"})
+        self.assertEqual(self.dummy._team_scores[2], 100)
