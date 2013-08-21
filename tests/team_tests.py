@@ -20,33 +20,36 @@ class TeamTests(unittest.TestCase):
         self.dummy.set_team_name("baker city")
         self.assertEqual(self.dummy._name, "baker city")
 
-    def test_get_team_members(self):
-        self.dummy._team_members = ["Daniel", "Anna"]
-        self.assertEqual(self.dummy.get_team_members(), ["Daniel", "Anna"])
+    def test_add_round(self):
+        self.dummy.add_round(1, 210, 6, "La Grande", True)
+        self.assertEqual(self.dummy._round, {1: [210, 6, "La Grande", "W"]})
 
-    def test_add_team_member(self):
-        self.dummy.add_team_members("Daniel")
-        self.dummy.add_team_members("Anna", "Heather", "Kimberly")
-        self.assertEqual(self.dummy.get_team_members(), ["Daniel", "Anna", "Heather", "Kimberly"])
+    def test_delete_round(self):
+        self.dummy.add_round(1, 210, 6, "Baker City", False)
+        self.dummy.add_round(2, 100, 4, "La Grande", True)
+        self.dummy.delete_round(2)
+        self.assertEqual(self.dummy._round, {1: [210, 6, "Baker City", "L"]})
 
-    def test_set_opposing_team(self):
-        self.dummy.set_opposing_team(1, "Bethel First")
-        self.assertEqual(self.dummy._opposing_team, {1: "Bethel First"})
+    def test_get_round(self):
+        self.dummy.add_round(1, 120, 3, "Baker City", False)
+        self.assertEqual(self.dummy.get_round(1), [120, 3, "Baker City", "L"])
 
-    def test_get_opposing_team(self):
-        self.dummy.set_opposing_team(3, "Bethel First")
-        self.assertEqual(self.dummy.get_opposing_team(3), "Bethel First")
+    def test_change_round_score(self):
+        self.dummy.add_round(1, 120, 3, "Baker City", False)
+        self.dummy.change_round_score(1, 200)
+        self.assertEqual(self.dummy.get_round(1), [200, 3, "Baker City", "L"])
 
-    def test_add_team_round(self):
-        self.dummy.add_team_round(1, 20, "Baker City", True)
-        self.assertEqual(self.dummy._team_wins_losses_round, {1: "W"})
-        self.assertEqual(self.dummy._team_scores[1], 20)
-        self.assertEqual(self.dummy._opposing_team[1], "Baker City")
+    def test_change_round_errors(self):
+        self.dummy.add_round(1, 120, 3, "Baker City", False)
+        self.dummy.change_round_errors(1, 5)
+        self.assertEqual(self.dummy.get_round(1), [120, 5, "Baker City", "L"])
 
-    def test_delete_team_round(self):
-        self.dummy.add_team_round(2, 100, "La Grande", False)
-        self.dummy.add_team_round(1, 20, "Baker City", True)
-        self.dummy.remove_team_round(1)
-        self.assertEqual(self.dummy._opposing_team[2], "La Grande")
-        self.assertEqual(self.dummy._team_wins_losses_round, {2: "L"})
-        self.assertEqual(self.dummy._team_scores[2], 100)
+    def test_change_round_opponent(self):
+        self.dummy.add_round(1, 120, 3, "Baker City", False)
+        self.dummy.change_round_opponent(1, "LA")
+        self.assertEqual(self.dummy.get_round(1), [120, 3, "LA", "L"])
+
+    def test_change_round_record(self):
+        self.dummy.add_round(1, 120, 3, "Baker City", False)
+        self.dummy.change_round_record(1, True)
+        self.assertEqual(self.dummy.get_round(1), [120, 3, "Baker City", "W"])
