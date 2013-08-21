@@ -40,3 +40,15 @@ class Team(object):
             self._round[round_][3] = "W"
         else:
             self._round[round_][3] = "L"
+
+    def get_round_score(self, round_):
+        return self._round[round_][0]
+
+    def get_round_errors(self, round_):
+        return self._round[round_][1]
+
+    def get_round_opponent(self, round_):
+        return self._round[round_][2]
+
+    def get_round_record(self, round_):
+        return self._round[round_][3]
